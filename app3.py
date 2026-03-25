@@ -51,8 +51,8 @@ def haversine(lat1, lon1, lat2, lon2):
     a = math.sin(dphi/2)**2 + math.cos(phi1)*math.cos(phi2)*math.sin(dlambda/2)**2
     return R * 2 * math.atan2(math.sqrt(a), math.sqrt(1-a))
 
-# ---------------- 6. LOCATION + DISTANCE ----------------
-st.subheader("📍 Your Location & Distance")
+# ---------------- 7. QUEUE ACTIONS ----------------
+st.subheader("🚀 Queue Actions")
 
 loc = get_geolocation()
 distance = None
@@ -62,26 +62,6 @@ if loc:
     u_lon = loc['coords']['longitude']
 
     distance = haversine(u_lat, u_lon, STOP_LAT, STOP_LON)
-
-    st.success("Location detected")
-
-    col1, col2 = st.columns(2)
-    col1.metric("Latitude", f"{u_lat:.6f}")
-    col2.metric("Longitude", f"{u_lon:.6f}")
-
-    st.metric("Distance to Stop (meters)", f"{int(distance)} m")
-
-    if distance <= ALLOWED_RADIUS:
-        st.success("✅ Within allowed range")
-    else:
-        st.error("❌ Outside allowed range")
-else:
-    st.warning("📍 Allow location access and wait a moment")
-
-st.divider()
-
-# ---------------- 7. QUEUE ACTIONS ----------------
-st.subheader("🚀 Queue Actions")
 
 # --- JOIN QUEUE ---
 if st.button("Join Queue", use_container_width=True):
@@ -160,6 +140,35 @@ try:
 
 except Exception as e:
     st.error(f"Error fetching queue: {e}")
+
+# ---------------- 6. LOCATION + DISTANCE ----------------
+st.subheader("📍 Your Location & Distance")
+
+#loc = get_geolocation()
+#distance = None
+
+if loc:
+    u_lat = loc['coords']['latitude']
+    u_lon = loc['coords']['longitude']
+
+    distance = haversine(u_lat, u_lon, STOP_LAT, STOP_LON)
+
+    st.success("Location detected")
+
+    col1, col2 = st.columns(2)
+    col1.metric("Latitude", f"{u_lat:.6f}")
+    col2.metric("Longitude", f"{u_lon:.6f}")
+
+    st.metric("Distance to Stop (meters)", f"{int(distance)} m")
+
+    if distance <= ALLOWED_RADIUS:
+        st.success("✅ Within allowed range")
+    else:
+        st.error("❌ Outside allowed range")
+else:
+    st.warning("📍 Allow location access and wait a moment")
+
+st.divider()
 
 # ---------------- 9. DEBUG INFO ----------------
 st.caption(f"User ID: {user_id}")
