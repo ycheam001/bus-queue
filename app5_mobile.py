@@ -166,7 +166,8 @@ with st.expander("📍 GPS & Debug"):
     if admin_pw1 == "gps123":
         if loc:
             st.write(f"Dist: {int(distance)}m | Valid: {'✅' if distance <= ALLOWED_RADIUS else '❌'}")
-        st.caption(f"Persistent User ID: {user_id}")
+        #st.caption(f"Persistent User ID: {user_id}")
+        st.caption(f"Logged in as: {user_phone}")
 
 with st.expander("🛠️ Admin Tools"):
     admin_pw = st.text_input("Admin Password", type="password", key = "pass2")
