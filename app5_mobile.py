@@ -79,8 +79,8 @@ if not st.session_state.phone:
 user_phone = st.session_state.phone
 
 # ---------------- 4. APP INTERFACE ----------------
-st.header("🚌 Bus Tracker & Queue")
-st.markdown(f"Welcome: {user_phone}")
+st.markdown("### 🚌 Bus Tracker & Queue")
+st.markdown(f"#### Welcome: {user_phone}")
 st_autorefresh(interval=15 * 1000, key="datarefresh")
 
 # Helpers
