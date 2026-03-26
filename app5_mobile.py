@@ -34,6 +34,18 @@ st.markdown("""
     html, body, [data-testid="stAppViewContainer"] {
             font-size: 10px !important; /* Standard is usually 16px */
         }
+    div.stButton > button[kind="primary"] {
+        background: linear-gradient(135deg, #1e7e34, #28a745);
+        border: none;
+    }
+    div.stButton > button:active {
+        transform: scale(0.96);
+    }
+    [data-testid="stMetric"] {
+        background-color: #f1f3f6;
+        padding: 15px;
+        border-radius: 12px;
+    }
     </style>
     """, unsafe_allow_html=True)
 
@@ -125,10 +137,11 @@ except Exception as e:
 
 # ---------------- 5. QUEUE ACTIONS ----------------
 st.divider()
+st.subheader("🚀 Join the Line")
 col1, col2 = st.columns(2)
 
 with col1:
-    if st.button("Join Queue", type="primary"):
+    if st.button("Join Queue", use_container_width=True, type="primary"):
         if loc and distance <= ALLOWED_RADIUS:
             existing = supabase.table("queue").select("*").eq("user_id", user_phone).execute()
             if not existing.data:
@@ -138,7 +151,7 @@ with col1:
         else: st.error("Out of range or GPS off")
 
 with col2:
-    if st.button("Leave Queue"):
+    if st.button("Leave Queue", use_container_width=True):
         supabase.table("queue").delete().eq("user_id", user_phone).execute()
         st.rerun()
 
