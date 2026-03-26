@@ -22,8 +22,8 @@ ALLOWED_RADIUS = 15000  # meters
 SOLO_CLOUD_URL = "https://leisurefrontier.solo-cloud.com/ext/locatebus.php?param=Ab09RFDA2lHKYik2dSb1fY21aF0KMjMwAEtJQExGADQ1OTU4OQ=="
 
 # 🔑 Supabase config
-SUPABASE_URL = "https://yhsbsnwbwmfyjnzkoqqz.supabase.co"
-SUPABASE_KEY = "sb_publishable_fM_da6WuqXziT8-awPDORg_t4C3JGJ4"
+SUPABASE_URL = st.secrets["SUPABASE_URL"]
+SUPABASE_KEY = st.secrets["SUPABASE_KEY"]
 supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
 
 # ---------------- 2. AUTO-REFRESH (15 Seconds) ----------------
