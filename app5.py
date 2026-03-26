@@ -146,14 +146,14 @@ except Exception as e:
 
 # ---------------- 10. ADMIN & DEBUG ----------------
 with st.expander("📍 GPS Debug"):
-    admin_pw1 = st.text_input("Password", type="password")
+    admin_pw1 = st.text_input("Password", type="password", key="gps_password")
     if admin_pw1 == "gps123":
         if loc:
             st.write(f"Distance: {int(distance)}m | Range: {'✅' if distance <= ALLOWED_RADIUS else '❌'}")
         st.caption(f"ID: {user_id}")
 
 with st.expander("🛠️ Admin Tools"):
-    admin_pw = st.text_input("Password", type="password")
+    admin_pw = st.text_input("Password", type="password", key="queue_password")
     if admin_pw == "bus123":
         admin_data = supabase.table("queue").select("*").order("created_at").execute()
         if admin_data.data:
