@@ -43,7 +43,7 @@ st.markdown("""
     #[data-testid="stVerticalBlock"] > div { gap: 0.5rem !important; }
     #div.stButton > button { width: 100%; height: 3.5em; border-radius: 12px; font-weight: bold; }
     #div.stButton > button[kind="primary"] { background: linear-gradient(135deg, #1e7e34, #28a745); border: none; }
-    [data-testid="stMetric"] { background-color: #f1f3f6; padding: 10px; border-radius: 12px; }
+    #[data-testid="stMetric"] { background-color: #f1f3f6; padding: 10px; border-radius: 12px; }
 
 # ---------------- 3. PHONE-BASED AUTH ----------------
 if "phone" not in st.session_state:
