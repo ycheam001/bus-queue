@@ -79,13 +79,9 @@ if not st.session_state.phone:
 user_phone = st.session_state.phone
 
 # ---------------- 4. APP INTERFACE ----------------
-st.title("🚌 Bus Tracker & Queue")
+st.header("🚌 Bus Tracker & Queue")
 st.subheader(f"Welcome: {user_phone}")
 st_autorefresh(interval=15 * 1000, key="datarefresh")
-
-# Live Map
-st.markdown("### 📍 Live Bus Map")
-components.iframe(SOLO_CLOUD_URL, height=350, scrolling=True)
 
 # Helpers
 def haversine(lat1, lon1, lat2, lon2):
@@ -154,6 +150,10 @@ with col2:
     if st.button("Leave Queue", use_container_width=True):
         supabase.table("queue").delete().eq("user_id", user_phone).execute()
         st.rerun()
+
+# Live Map
+st.markdown("### 📍 Live Bus Map")
+components.iframe(SOLO_CLOUD_URL, height=350, scrolling=True)
 
 # Logout (Clear Session)
 if st.button("Logout / Change Number", use_container_width=True):
