@@ -31,15 +31,19 @@ supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
 # Custom CSS for a tight, mobile-app look
 st.markdown("""
     <style>
-    .block-container { padding-top: 1rem !important; padding-bottom: 0rem !important; }
-    h1 { margin-top: -1.5rem !important; font-size: 1.8rem !important; text-align: center; }
-    h3 { margin-bottom: 0.2rem !important; font-size: 1.1rem !important; }
-    [data-testid="stVerticalBlock"] > div { gap: 0.5rem !important; }
-    div.stButton > button { width: 100%; height: 3.5em; border-radius: 12px; font-weight: bold; }
-    div.stButton > button[kind="primary"] { background: linear-gradient(135deg, #1e7e34, #28a745); border: none; }
-    [data-testid="stMetric"] { background-color: #f1f3f6; padding: 10px; border-radius: 12px; }
+    html, body, [data-testid="stAppViewContainer"] {
+            font-size: 10px !important; /* Standard is usually 16px */
+        }
     </style>
     """, unsafe_allow_html=True)
+
+    #.block-container { padding-top: 1rem !important; padding-bottom: 0rem !important; }
+    #h1 { margin-top: -1.5rem !important; font-size: 1.8rem !important; text-align: center; }
+    #h3 { margin-bottom: 0.2rem !important; font-size: 1.1rem !important; }
+    #[data-testid="stVerticalBlock"] > div { gap: 0.5rem !important; }
+    #div.stButton > button { width: 100%; height: 3.5em; border-radius: 12px; font-weight: bold; }
+    #div.stButton > button[kind="primary"] { background: linear-gradient(135deg, #1e7e34, #28a745); border: none; }
+    [data-testid="stMetric"] { background-color: #f1f3f6; padding: 10px; border-radius: 12px; }
 
 # ---------------- 3. PHONE-BASED AUTH ----------------
 if "phone" not in st.session_state:
@@ -64,6 +68,7 @@ user_phone = st.session_state.phone
 
 # ---------------- 4. APP INTERFACE ----------------
 st.title("🚌 Bus Tracker & Queue")
+st.subheader(f"Welcome: {user_phone}")
 st_autorefresh(interval=15 * 1000, key="datarefresh")
 
 # Live Map
