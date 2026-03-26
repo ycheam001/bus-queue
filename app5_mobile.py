@@ -31,6 +31,13 @@ supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
 # Custom CSS for a tight, mobile-app look
 st.markdown("""
     <style>
+    .block-container {
+        padding-top: 1rem !important;    /* Moves content up */
+        padding-bottom: 0rem !important; /* Removes bottom space */
+        padding-left: 1rem !important;   /* Tightens sides for mobile */
+        padding-right: 1rem !important;  /* Tightens sides for mobile */
+        max-width: 100% !important;      /* Ensures it uses full mobile width */
+    }
     html, body, [data-testid="stAppViewContainer"] {
             font-size: 10px !important; /* Standard is usually 16px */
         }
