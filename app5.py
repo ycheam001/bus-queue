@@ -146,9 +146,11 @@ except Exception as e:
 
 # ---------------- 10. ADMIN & DEBUG ----------------
 with st.expander("📍 GPS Debug"):
-    if loc:
-        st.write(f"Distance: {int(distance)}m | Range: {'✅' if distance <= ALLOWED_RADIUS else '❌'}")
-    st.caption(f"ID: {user_id}")
+    admin_pw = st.text_input("Password", type="password")
+    if admin_pw == "gps123":
+        if loc:
+            st.write(f"Distance: {int(distance)}m | Range: {'✅' if distance <= ALLOWED_RADIUS else '❌'}")
+        st.caption(f"ID: {user_id}")
 
 with st.expander("🛠️ Admin Tools"):
     admin_pw = st.text_input("Password", type="password")
