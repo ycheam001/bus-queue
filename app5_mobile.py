@@ -85,7 +85,7 @@ st_autorefresh(interval=15 * 1000, key="datarefresh")
 
 # Live Map
 st.markdown("### 📍 Live Bus Map")
-components.iframe(SOLO_CLOUD_URL, height=380, scrolling=True)
+components.iframe(SOLO_CLOUD_URL, height=350, scrolling=True)
 
 # Helpers
 def haversine(lat1, lon1, lat2, lon2):
